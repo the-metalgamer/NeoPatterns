@@ -284,3 +284,17 @@ public:
         Pixels.ColorSet(Pixels.Color(red, green, blue));
     }
 };
+
+class Random : public NeoPattern
+{
+public:
+    Random(NeoPatterns& pixels, millis_t interval, color_t color1, uint16_t steps) :
+      NeoPattern(pixels, interval, color1, 0, steps, FORWARD)
+    {
+    }
+
+    virtual void Update()
+    {
+        Pixels.setPixelColor(random(Pixels.numPixels()), Color1);
+    }
+};
