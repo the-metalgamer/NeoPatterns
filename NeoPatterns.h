@@ -345,3 +345,17 @@ public:
         Pixels.ColorSet(Color1);
     }
 };
+
+class Cycle : public NeoPattern
+{
+public:
+    Cycle(NeoPatterns& pixels, millis_t interval, uint16_t steps) :
+      NeoPattern(pixels, interval, 0, 0, steps, FORWARD)
+    {
+    }
+
+    virtual void Update()
+    {
+        Pixels.ColorSet(Pixel.Wheel((Index * (256 / TotalSteps)) & 255);
+    }
+};
