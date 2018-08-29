@@ -317,7 +317,7 @@ class Blink : public NeoPattern
 {
 public:
     Blink(NeoPatterns& pixels, millis_t interval, color_t color1, uint16_t steps) :
-      NeoPattern(pixels, interval, color1, 0, steps, FORWARD)
+      NeoPattern(pixels, interval, color1, 0, steps + (steps % 2), FORWARD)
     {
     }
 
