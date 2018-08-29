@@ -309,7 +309,7 @@ public:
 
     virtual void Update()
     {
-	Pixels.ColorSet(Pixels.Color(0, 0, 0));
+        Pixels.ColorSet(Pixels.Color(0, 0, 0));
         Pixels.setPixelColor(random(Pixels.numPixels()), Color1);
     }
 };
