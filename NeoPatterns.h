@@ -349,8 +349,8 @@ public:
 class Cycle : public NeoPattern
 {
 public:
-    Cycle(NeoPatterns& pixels, millis_t interval, uint16_t steps) :
-      NeoPattern(pixels, interval, 0, 0, steps, FORWARD)
+    Cycle(NeoPatterns& pixels, millis_t interval, uint16_t steps, direction_t dir = FORWARD) :
+      NeoPattern(pixels, interval, 0, 0, steps, dir)
     {
     }
 
