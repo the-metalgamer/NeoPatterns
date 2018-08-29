@@ -143,7 +143,6 @@ public:
         {
             setPixelColor(i, color);
         }
-        show();
     }
 
     // Returns the Red component of a 32-bit color
