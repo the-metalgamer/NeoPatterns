@@ -288,7 +288,7 @@ class Random : public NeoPattern
 {
 public:
     Random(NeoPatterns& pixels, millis_t interval, color_t color1, uint16_t steps) :
-      NeoPattern(pixels, interval, color1, 0, steps, FORWARD)
+      NeoPattern(pixels, interval, color1, 0, steps)
     {
     }
 
@@ -302,7 +302,7 @@ class Dot : public NeoPattern
 {
 public:
     Dot(NeoPatterns& pixels, millis_t interval, color_t color1, uint16_t steps) :
-      NeoPattern(pixels, interval, color1, 0, steps, FORWARD)
+      NeoPattern(pixels, interval, color1, 0, steps)
     {
     }
 
@@ -317,7 +317,7 @@ class StaticColor : public NeoPattern
 {
 public:
     StaticColor(NeoPatterns& pixels, color_t color1) :
-      NeoPattern(pixels, 10, color1, 0, 1, FORWARD)
+      NeoPattern(pixels, 10, color1, 0, 1)
     {
     }
 
