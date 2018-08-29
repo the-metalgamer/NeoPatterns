@@ -331,3 +331,17 @@ public:
 	}
     }
 };
+
+class StaticColor : public NeoPattern
+{
+public:
+    StaticColor(NeoPatterns& pixels, color_t color1) :
+      NeoPattern(pixels, 10, color1, 0, 1, FORWARD)
+    {
+    }
+
+    virtual void Update()
+    {
+        Pixels.ColorSet(Color1);
+    }
+};
