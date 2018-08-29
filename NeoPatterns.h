@@ -253,14 +253,14 @@ public:
 class Pulsar : public NeoPattern
 {
 public:
-    Pulsar(NeoPatterns& pixels, millis_t interval, color_t color1, color_t color2) :
-      NeoPattern(pixels, interval, color1, color2, 2)
+    Pulsar(NeoPatterns& pixels, millis_t interval, color_t color1, color_t color2, uint16_t steps) :
+      NeoPattern(pixels, interval, color1, color2, steps + (steps % 2))
     {
     }
 
     virtual void Update()
     { 
-        Pixels.ColorSet(Index == 0 ? Color1 : Color2);
+        Pixels.ColorSet((Index % 2) == 0 ? Color1 : Color2);
     }
 };
 
@@ -310,24 +310,6 @@ public:
     {
         Pixels.ColorSet(Pixels.Color(0, 0, 0));
         Pixels.setPixelColor(random(Pixels.numPixels()), Color1);
-    }
-};
-
-class Blink : public NeoPattern
-{
-public:
-    Blink(NeoPatterns& pixels, millis_t interval, color_t color1, uint16_t steps) :
-      NeoPattern(pixels, interval, color1, 0, steps + (steps % 2), FORWARD)
-    {
-    }
-
-    virtual void Update()
-    {
-	if (Index % 2 == 0) {
-	    Pixels.ColorSet(Pixels.Color(0, 0, 0));
-	} else {
-	    Pixels.ColorSet(Color1);
-	}
     }
 };
 
