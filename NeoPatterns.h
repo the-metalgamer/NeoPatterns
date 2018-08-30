@@ -233,6 +233,21 @@ public:
     }
 };
 
+class DoubleColorWipe : public NeoPattern
+{
+public:
+    DoubleColorWipe(NeoPatterns& pixels, millis_t interval, color_t color, direction_t dir = FORWARD) :
+      NeoPattern(pixels, interval, color, 0, pixels.numPixels() / 2, dir)
+    {
+    }
+
+    virtual void Update()
+    {
+        Pixels.setPixelColor(Index, Color1);
+        Pixels.setPixelColor(Pixels.numPixels() - 1 - Index, Color1);
+    }
+};
+
 class Scanner : public NeoPattern
 {
 public:
@@ -249,6 +264,26 @@ public:
         }
     }
 };
+
+class DoubleScanner : public NeoPattern
+{
+public:
+    DoubleScanner(NeoPatterns& pixels, millis_t interval, color_t color, bool split = false) :
+      NeoPattern(pixels, interval, color, 0, (pixels.numPixels() * (split ? 1 : 2)) / 2)
+    {
+    }
+
+    virtual void Update()
+    { 
+        for (int i = 0; i < Pixels.numPixels() / 2; ++i)
+        {
+            color_t c = (i == Index || i == TotalSteps - Index) ? Color1 : Pixels.DimColor(Pixels.getPixelColor(i));
+            Pixels.setPixelColor(i, c);
+            Pixels.setPixelColor(Pixels.numPixels() - 1 - i, c);
+        }
+    }
+};
+
 
 class Pulsar : public NeoPattern
 {
@@ -297,6 +332,23 @@ public:
         Pixels.setPixelColor(random(Pixels.numPixels()), Color1);
     }
 };
+
+class DoubleRandom : public NeoPattern
+{
+public:
+    DoubleRandom(NeoPatterns& pixels, millis_t interval, color_t color1, uint16_t steps) :
+      NeoPattern(pixels, interval, color1, 0, steps)
+    {
+    }
+
+    virtual void Update()
+    {
+        int i = random(Pixels.numPixels() / 2);
+        Pixels.setPixelColor(i, Color1);
+        Pixels.setPixelColor(numPixels() - 1 - i, Color1);
+    }
+};
+
 
 class Dot : public NeoPattern
 {
